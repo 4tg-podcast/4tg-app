@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>4TG Coaching</title>
+<meta name="description" content="4TG Coaching — Your mindset arena. For driven female athletes.">
+<meta name="theme-color" content="#080c0c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="4TG">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<!-- Apple touch icons (generated inline via JS below) -->
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #23CCCC;
+  --teal-dim: rgba(35,204,204,0.15);
+  --teal-border: rgba(35,204,204,0.25);
+  --bg: #080c0c;
+  --bg2: #0d1414;
+  --bg3: #111a1a;
+  --panel: #0f1919;
+  --card: rgba(255,255,255,0.038);
+  --card-hover: rgba(35,204,204,0.06);
+  --border: rgba(255,255,255,0.07);
+  --border-teal: rgba(35,204,204,0.22);
+  --muted: rgba(255,255,255,0.38);
+  --body: rgba(255,255,255,0.72);
+  --white: #fff;
+  --gold: #f5c842;
+  --green: #3ecf8e;
+  --coral: #ff6b6b;
+  --purple: #a78bfa;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+
+/* ── UTILS ── */
+.view{display:none;min-height:100vh;flex-direction:column}
+.view.active{display:flex}
+.anton{font-family:'Anton',sans-serif;letter-spacing:0.03em;text-transform:uppercase}
+.teal{color:var(--teal)}
+.muted{color:var(--muted)}
+.eyebrow{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);font-weight:600}
+.sec-label{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:1.5rem 0 0.75rem}
+.sec-label:first-child{margin-top:0}
+
+/* ── LOGIN ── */
+#v-login{background:var(--bg);align-items:center;justify-content:center;padding:2rem;position:relative;overflow:hidden}
+.login-orb{position:absolute;border-radius:50%;pointer-events:none}
+.orb1{width:600px;height:600px;background:radial-gradient(circle,rgba(35,204,204,0.09) 0%,transparent 65%);top:-200px;left:-150px}
+.orb2{width:350px;height:350px;background:radial-gradient(circle,rgba(35,204,204,0.06) 0%,transparent 65%);bottom:-80px;right:-60px}
+.login-box{background:rgba(255,255,255,0.03);border:1px solid var(--border-teal);border-radius:24px;padding:2.75rem 2.25rem;width:100%;max-width:390px;z-index:1;backdrop-filter:blur(16px)}
+.login-wm{font-family:'Anton',sans-serif;font-size:3.2rem;letter-spacing:0.06em;color:var(--teal);text-align:center;margin-bottom:0.1rem}
+.login-sub{text-align:center;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:2.25rem}
+.fl{display:block;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.45rem}
+.fi{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(35,204,204,0.18);border-radius:12px;padding:0.85rem 1rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;margin-bottom:1.1rem;transition:border-color 0.2s}
+.fi:focus{border-color:var(--teal)}
+.btn-login{width:100%;background:var(--teal);color:var(--bg);font-family:'Anton',sans-serif;font-size:1.05rem;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:12px;padding:1rem;cursor:pointer;transition:all 0.2s;margin-top:0.25rem}
+.btn-login:hover{background:#1ab3b3;transform:translateY(-1px)}
+.demo-hint{text-align:center;margin-top:1.25rem;font-size:0.78rem;color:var(--muted)}
+.demo-hint span{color:var(--teal);cursor:pointer;text-decoration:underline}
+
+/* ── APP FRAME ── */
+#v-app{background:var(--bg)}
+.app-header{background:var(--bg);border-bottom:1px solid var(--border);padding:0.875rem 1.4rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200}
+.hdr-wm{font-family:'Anton',sans-serif;font-size:1.5rem;letter-spacing:0.06em;color:var(--teal)}
+.hdr-right{display:flex;align-items:center;gap:0.75rem}
+.hdr-name{font-size:0.8rem;color:var(--muted)}
+.avatar{width:33px;height:33px;border-radius:50%;background:var(--teal);color:var(--bg);font-family:'Anton',sans-serif;font-size:0.95rem;display:flex;align-items:center;justify-content:center;cursor:pointer}
+
+.scroll{flex:1;overflow-y:auto;padding:1.25rem 1.25rem 5.5rem;max-width:680px;margin:0 auto;width:100%}
+
+/* ── BOTTOM NAV ── */
+.bnav{position:fixed;bottom:0;left:0;right:0;background:rgba(8,12,12,0.97);border-top:1px solid var(--border);backdrop-filter:blur(24px);display:flex;padding:0.45rem 0 max(0.45rem,env(safe-area-inset-bottom));z-index:200}
+.nt{flex:1;display:flex;flex-direction:column;align-items:center;gap:0.18rem;padding:0.45rem 0.2rem;cursor:pointer;color:var(--muted);transition:color 0.2s;font-size:0.58rem;letter-spacing:0.06em;text-transform:uppercase}
+.nt.active{color:var(--teal)}
+.ni{font-size:1.15rem;line-height:1}
+
+/* ══════════ HOME TAB ══════════ */
+.checkin-card{background:linear-gradient(135deg,var(--bg3) 0%,#0d2020 100%);border:1px solid var(--border-teal);border-radius:20px;padding:1.4rem;margin-bottom:1.25rem;position:relative;overflow:hidden}
+.checkin-card::after{content:'';position:absolute;right:-30px;top:-30px;width:130px;height:130px;background:radial-gradient(circle,rgba(35,204,204,0.12) 0%,transparent 70%);pointer-events:none}
+.checkin-done{background:rgba(62,207,142,0.08);border-color:rgba(62,207,142,0.25)}
+.checkin-title{font-family:'Anton',sans-serif;font-size:1.3rem;letter-spacing:0.03em;text-transform:uppercase;margin-bottom:0.2rem}
+.checkin-sub{font-size:0.8rem;color:var(--muted);margin-bottom:1.1rem}
+.ci-row{display:flex;gap:0.6rem;margin-bottom:0.6rem;flex-wrap:wrap}
+.ci-chip{padding:0.35rem 0.8rem;border-radius:20px;border:1px solid var(--border);font-size:0.8rem;cursor:pointer;transition:all 0.18s;color:var(--muted);background:transparent;white-space:nowrap}
+.ci-chip.sel{background:var(--teal-dim);border-color:var(--teal);color:var(--teal)}
+.ci-focus{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:0.65rem 0.9rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;margin-bottom:0.75rem}
+.ci-focus:focus{border-color:var(--border-teal)}
+.ci-focus::placeholder{color:var(--muted)}
+.btn-ci{background:var(--teal);color:var(--bg);font-family:'Anton',sans-serif;font-size:0.88rem;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:10px;padding:0.7rem 1.4rem;cursor:pointer;transition:all 0.2s}
+.btn-ci:hover{background:#1ab3b3}
+.checkin-summary{display:flex;gap:0.6rem;flex-wrap:wrap}
+.ci-sum-chip{padding:0.3rem 0.75rem;border-radius:16px;font-size:0.78rem;background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal-border)}
+
+/* Kylie Message */
+.kylie-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.25rem;margin-bottom:1rem;display:flex;gap:1rem;align-items:flex-start}
+.kylie-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--teal),#1a9999);display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:1rem;color:var(--bg);flex-shrink:0}
+.kylie-body{flex:1}
+.kylie-name{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.3rem}
+.kylie-msg{font-size:0.88rem;color:var(--body);line-height:1.6;font-style:italic}
+.kylie-week{font-size:0.7rem;color:var(--muted);margin-top:0.35rem}
+
+/* Quick tiles */
+.tile-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem}
+.tile{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.1rem;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden}
+.tile:hover{border-color:var(--border-teal);background:var(--card-hover);transform:translateY(-1px)}
+.tile-icon{font-size:1.6rem;margin-bottom:0.5rem;display:block}
+.tile-name{font-family:'Anton',sans-serif;font-size:0.95rem;letter-spacing:0.03em;text-transform:uppercase;margin-bottom:0.15rem}
+.tile-desc{font-size:0.72rem;color:var(--muted);line-height:1.3}
+.tile-game{background:linear-gradient(135deg,#0d2020,#001f1f);border-color:var(--border-teal)}
+.tile-game::before{content:'';position:absolute;right:-20px;bottom:-20px;width:90px;height:90px;background:radial-gradient(circle,rgba(35,204,204,0.15) 0%,transparent 70%)}
+.tile-hard{background:linear-gradient(135deg,#1a0d0d,#200d0d);border-color:rgba(255,107,107,0.25)}
+.tile-hard .tile-name{color:var(--coral)}
+
+/* Streak */
+.streak-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:1rem}
+.streak-num{font-family:'Anton',sans-serif;font-size:2.2rem;color:var(--teal);line-height:1}
+.streak-right{flex:1}
+.streak-label{font-size:0.78rem;color:var(--body);margin-bottom:0.35rem}
+.streak-dots{display:flex;gap:0.3rem}
+.sdot{width:28px;height:6px;border-radius:3px;background:rgba(255,255,255,0.08)}
+.sdot.done{background:var(--teal)}
+.sdot.today{background:rgba(35,204,204,0.4)}
+
+/* ══════════ TODAY TAB ══════════ */
+.today-header{margin-bottom:1.1rem}
+.today-switcher{display:flex;gap:0.4rem;overflow-x:auto;padding-bottom:0.25rem;margin-bottom:1rem;scrollbar-width:none}
+.today-switcher::-webkit-scrollbar{display:none}
+.ts-btn{padding:0.4rem 1rem;border-radius:20px;border:1px solid var(--border);font-size:0.78rem;cursor:pointer;white-space:nowrap;transition:all 0.2s;color:var(--muted);background:transparent}
+.ts-btn.active{background:var(--teal-dim);border-color:var(--teal);color:var(--teal)}
+
+/* Progress ring */
+.today-ring-wrap{display:flex;align-items:center;gap:1rem;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1rem 1.25rem;margin-bottom:1.1rem}
+.ring-svg-wrap{position:relative;width:52px;height:52px;flex-shrink:0}
+.ring-svg-wrap svg{transform:rotate(-90deg)}
+.r-bg{fill:none;stroke:rgba(255,255,255,0.07);stroke-width:5}
+.r-fill{fill:none;stroke:var(--teal);stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset 0.6s ease}
+.r-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:0.85rem;color:var(--teal)}
+.ring-text-big{font-family:'Anton',sans-serif;font-size:1.6rem;color:var(--teal);line-height:1;margin-bottom:0.1rem}
+.ring-text-sub{font-size:0.78rem;color:var(--muted)}
+
+/* Checklist */
+.cl-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:0.875rem}
+.cl-head{padding:1rem 1.2rem;display:flex;align-items:center;gap:0.75rem;cursor:pointer;user-select:none}
+.cl-ico{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.cl-ico-gold{background:rgba(245,200,66,0.12)}
+.cl-ico-teal{background:rgba(35,204,204,0.12)}
+.cl-ico-green{background:rgba(62,207,142,0.12)}
+.cl-ico-purple{background:rgba(167,139,250,0.12)}
+.cl-hb{flex:1}
+.cl-title{font-size:0.92rem;font-weight:600;margin-bottom:0.1rem}
+.cl-sub{font-size:0.73rem;color:var(--muted)}
+.cl-arr{font-size:0.8rem;color:var(--muted);transition:transform 0.22s}
+.cl-arr.open{transform:rotate(90deg)}
+.cl-body{display:none;padding:0 1.2rem 1.2rem}
+.cl-body.open{display:block}
+
+.ci{display:flex;align-items:flex-start;gap:0.7rem;padding:0.7rem 0;border-bottom:1px solid rgba(255,255,255,0.045)}
+.ci:last-child{border-bottom:none}
+.cb{width:21px;height:21px;border-radius:6px;border:1.5px solid rgba(35,204,204,0.3);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;margin-top:2px;transition:all 0.18s;background:transparent}
+.cb.on{background:var(--teal);border-color:var(--teal)}
+.ck{display:none;color:var(--bg);font-size:0.72rem;font-weight:800}
+.cb.on .ck{display:block}
+.cc{flex:1}
+.clabel{font-size:0.86rem;color:var(--body);line-height:1.4;font-weight:500}
+.clabel.done{text-decoration:line-through;color:var(--muted)}
+.cinput{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:8px;padding:0.5rem 0.75rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.83rem;outline:none;margin-top:0.35rem;transition:border-color 0.2s;resize:none}
+.cinput:focus{border-color:rgba(35,204,204,0.35)}
+.cinput::placeholder{color:var(--muted)}
+textarea.cinput{min-height:65px;resize:vertical}
+.ctoggle-row{display:flex;gap:0.4rem;margin-top:0.35rem;flex-wrap:wrap}
+.ctoggle{padding:0.28rem 0.7rem;border-radius:16px;border:1px solid rgba(255,255,255,0.12);font-size:0.76rem;cursor:pointer;transition:all 0.15s;color:var(--muted);background:transparent}
+.ctoggle.sel{background:var(--teal-dim);border-color:var(--teal);color:var(--teal)}
+.cstars{display:flex;gap:0.25rem;margin-top:0.35rem}
+.cstar{font-size:1.25rem;cursor:pointer;opacity:0.25;transition:opacity 0.12s}
+.cstar.on{opacity:1}
+.cprompt{font-size:0.76rem;color:var(--teal);font-style:italic;margin:0.3rem 0;cursor:pointer;display:inline-block}
+.cprompt:hover{opacity:0.75}
+
+/* ══════════ TOOLKIT TAB ══════════ */
+.rtabs{display:flex;gap:0.4rem;overflow-x:auto;padding-bottom:0.3rem;scrollbar-width:none;margin-bottom:1rem}
+.rtabs::-webkit-scrollbar{display:none}
+.rtab{padding:0.4rem 0.9rem;border-radius:20px;border:1px solid var(--border);font-size:0.76rem;cursor:pointer;white-space:nowrap;transition:all 0.18s;color:var(--muted);background:transparent}
+.rtab.active{background:var(--teal-dim);border-color:var(--teal);color:var(--teal)}
+.rcard{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:1rem 1.1rem;cursor:pointer;transition:all 0.18s;display:flex;align-items:flex-start;gap:0.8rem;margin-bottom:0.7rem}
+.rcard:hover{border-color:var(--border-teal);background:var(--card-hover);transform:translateX(2px)}
+.remo{font-size:1.5rem;flex-shrink:0;margin-top:1px}
+.rbody{flex:1}
+.rtitle{font-size:0.88rem;font-weight:600;margin-bottom:0.2rem}
+.rdesc{font-size:0.76rem;color:var(--muted);line-height:1.4}
+.rtag{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.18rem 0.5rem;border-radius:5px;background:rgba(35,204,204,0.1);color:var(--teal);margin-top:0.35rem;display:inline-block}
+.refresh-btn{display:flex;align-items:center;justify-content:center;gap:0.4rem;margin-top:0.5rem;cursor:pointer;color:rgba(35,204,204,0.5);font-size:0.76rem;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.18s}
+.refresh-btn:hover{color:var(--teal)}
+
+/* ══════════ ME TAB ══════════ */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;margin-bottom:1.1rem}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:1.1rem}
+.stat-num{font-family:'Anton',sans-serif;font-size:2.2rem;color:var(--teal);line-height:1;margin-bottom:0.15rem}
+.stat-lbl{font-size:0.75rem;color:var(--muted)}
+
+/* Weekly summary */
+.week-summary{background:linear-gradient(135deg,var(--bg3),#0d2020);border:1px solid var(--border-teal);border-radius:18px;padding:1.25rem;margin-bottom:1rem}
+.ws-row{display:flex;gap:0.75rem;margin-top:0.75rem;overflow-x:auto;scrollbar-width:none}
+.ws-row::-webkit-scrollbar{display:none}
+.ws-day{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:0.3rem}
+.ws-day-lbl{font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em}
+.ws-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600}
+.ws-dot.full{background:var(--teal);color:var(--bg)}
+.ws-dot.part{background:rgba(35,204,204,0.25);color:var(--teal)}
+.ws-dot.miss{background:rgba(255,255,255,0.06);color:var(--muted)}
+.ws-dot.today{background:rgba(35,204,204,0.15);color:var(--teal);border:1.5px solid var(--teal)}
+
+/* Journal timeline */
+.jentry{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.05rem;margin-bottom:0.7rem;cursor:pointer;transition:border-color 0.18s}
+.jentry:hover{border-color:var(--border-teal)}
+.je-date{font-size:0.68rem;color:var(--teal);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem}
+.je-type{font-size:0.65rem;color:var(--muted);margin-bottom:0.4rem}
+.je-text{font-size:0.85rem;color:var(--body);line-height:1.55}
+.je-chips{display:flex;gap:0.4rem;margin-top:0.5rem;flex-wrap:wrap}
+.je-chip{font-size:0.65rem;padding:0.18rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.05);color:var(--muted)}
+
+/* ══════════ OVERLAYS ══════════ */
+.overlay{position:fixed;inset:0;background:rgba(5,10,10,0.94);z-index:500;display:none;flex-direction:column;backdrop-filter:blur(8px)}
+.overlay.open{display:flex}
+.ov-hdr{background:var(--bg);border-bottom:1px solid var(--border);padding:1rem 1.4rem;display:flex;align-items:center;gap:1rem;flex-shrink:0}
+.ov-back{background:none;border:none;color:var(--teal);font-size:1.4rem;cursor:pointer;padding:0;line-height:1}
+.ov-title{font-size:0.88rem;font-weight:600}
+.ov-scroll{flex:1;overflow-y:auto;padding:1.5rem 1.4rem 3rem;max-width:680px;margin:0 auto;width:100%}
+.ov-eyebrow{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:0.4rem}
+.ov-h1{font-family:'Anton',sans-serif;font-size:2rem;letter-spacing:0.02em;text-transform:uppercase;margin-bottom:0.75rem;line-height:1.05}
+.ov-intro{font-size:0.9rem;color:var(--body);line-height:1.7;margin-bottom:1.5rem}
+.ov-step{display:flex;gap:0.875rem;padding:0.7rem 0;border-bottom:1px solid rgba(255,255,255,0.05);align-items:flex-start}
+.ov-step:last-child{border-bottom:none}
+.ov-sn{width:28px;height:28px;background:rgba(35,204,204,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:var(--teal);font-weight:700;flex-shrink:0}
+.ov-st{font-size:0.87rem;color:var(--body);line-height:1.6}
+.ov-note{background:rgba(35,204,204,0.07);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;padding:1rem 1.1rem;font-style:italic;font-size:0.88rem;color:var(--light);line-height:1.6;margin-top:0.75rem}
+
+/* Game Day Mode */
+#ov-gameday{background:var(--bg)}
+.gd-hero{text-align:center;padding:2.5rem 1.5rem 1.5rem}
+.gd-badge{display:inline-block;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);border:1px solid var(--border-teal);border-radius:20px;padding:0.3rem 0.9rem;margin-bottom:1rem}
+.gd-title{font-family:'Anton',sans-serif;font-size:3rem;letter-spacing:0.04em;text-transform:uppercase;line-height:1;margin-bottom:0.75rem}
+.gd-title span{color:var(--teal)}
+.gd-sub{font-size:0.9rem;color:var(--muted);margin-bottom:2rem;line-height:1.5}
+.gd-steps{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem}
+.gd-step{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:16px;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:1rem;cursor:pointer;transition:all 0.2s}
+.gd-step:hover{border-color:var(--border-teal);background:var(--card-hover)}
+.gd-step-num{font-family:'Anton',sans-serif;font-size:1.5rem;color:var(--teal);width:32px;flex-shrink:0;text-align:center}
+.gd-step-body{}
+.gd-step-title{font-weight:600;font-size:0.92rem;margin-bottom:0.15rem}
+.gd-step-desc{font-size:0.78rem;color:var(--muted)}
+.gd-mantra{background:rgba(35,204,204,0.07);border:1px solid var(--border-teal);border-radius:16px;padding:1.25rem;text-align:center;font-style:italic;font-size:1rem;color:var(--teal);line-height:1.5;margin-bottom:1.5rem}
+
+/* Hard Day Mode */
+#ov-hardday .ov-scroll{display:flex;flex-direction:column;gap:0.75rem}
+.hd-q{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.1rem}
+.hd-q-label{font-size:0.78rem;color:var(--body);margin-bottom:0.5rem;line-height:1.4;font-weight:500}
+.hd-q textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:8px;padding:0.6rem 0.75rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.85rem;resize:none;min-height:70px;outline:none;transition:border-color 0.2s}
+.hd-q textarea:focus{border-color:rgba(35,204,204,0.35)}
+.hd-q textarea::placeholder{color:var(--muted)}
+.hd-intro{background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);border-radius:14px;padding:1.1rem;text-align:center}
+.hd-intro-emoji{font-size:2rem;margin-bottom:0.5rem}
+.hd-intro-title{font-family:'Anton',sans-serif;font-size:1.4rem;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.4rem;color:var(--coral)}
+.hd-intro-text{font-size:0.85rem;color:var(--muted);line-height:1.5}
+.hd-breath{background:rgba(35,204,204,0.06);border:1px solid var(--border-teal);border-radius:14px;padding:1.1rem;cursor:pointer;text-align:center;transition:all 0.2s}
+.hd-breath:hover{background:rgba(35,204,204,0.1)}
+.hd-breath-label{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:0.3rem}
+.hd-breath-text{font-size:0.88rem;color:var(--body)}
+
+/* Toast */
+.toast{position:fixed;bottom:5.5rem;left:50%;transform:translateX(-50%) translateY(8px);background:var(--teal);color:var(--bg);font-family:'Anton',sans-serif;font-size:0.82rem;letter-spacing:0.09em;text-transform:uppercase;padding:0.6rem 1.35rem;border-radius:30px;z-index:999;opacity:0;pointer-events:none;transition:all 0.28s;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Admin Panel */
+#ov-admin .ov-scroll{display:flex;flex-direction:column;gap:1rem}
+.admin-field label{display:block;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem}
+.admin-field input,.admin-field textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:0.7rem 0.9rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;resize:none}
+.admin-field input:focus,.admin-field textarea:focus{border-color:var(--border-teal)}
+.admin-field textarea{min-height:80px}
+.btn-admin{background:var(--teal);color:var(--bg);font-family:'Anton',sans-serif;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:10px;padding:0.8rem 1.5rem;cursor:pointer;transition:all 0.2s}
+.btn-admin:hover{background:#1ab3b3}
+.admin-section-title{font-family:'Anton',sans-serif;font-size:1rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--teal);margin-bottom:0.75rem;padding-top:0.5rem;border-top:1px solid var(--border)}
+.admin-section-title:first-child{border-top:none;padding-top:0}
+.client-row{display:flex;align-items:center;gap:0.75rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:0.875rem 1rem}
+.client-av{width:34px;height:34px;border-radius:50%;background:var(--teal-dim);border:1px solid var(--border-teal);color:var(--teal);font-family:'Anton',sans-serif;font-size:0.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.client-info{flex:1}
+.client-name{font-size:0.88rem;font-weight:600;margin-bottom:0.1rem}
+.client-sport{font-size:0.73rem;color:var(--muted)}
+.client-edit{font-size:0.73rem;color:var(--teal);cursor:pointer;text-decoration:underline}
+</style>
+</head>
+<body>
+
+<!-- ══ LOGIN ══ -->
+<div id="v-login" class="view active">
+  <div class="login-orb orb1"></div>
+  <div class="login-orb orb2"></div>
+  <div class="login-box">
+    <div class="login-wm">4TG</div>
+    <div class="login-sub">Coaching · Your Arena</div>
+    <label class="fl">Name or email</label>
+    <input class="fi" id="li-name" placeholder="e.g. Sarah" />
+    <label class="fl">Access code</label>
+    <input class="fi" type="password" id="li-code" placeholder="••••••" />
+    <button class="btn-login" onclick="doLogin()">Enter the Arena →</button>
+    <div class="demo-hint">Demo: <span onclick="demoLogin('Sarah','AFL')">Sarah (athlete)</span> · <span onclick="openAdmin()">Admin</span></div>
+  </div>
+</div>
+
+<!-- ══ MAIN APP ══ -->
+<div id="v-app" class="view">
+  <header class="app-header">
+    <div class="hdr-wm">4TG</div>
+    <div class="hdr-right">
+      <span class="hdr-name" id="hdr-name">Sarah</span>
+      <div class="avatar" id="hdr-av">S</div>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <div id="tab-home" class="scroll">
+    <!-- Check-in (built dynamically based on time of day) -->
+    <div id="ci-card" class="checkin-card"></div>
+
+    <!-- Kylie message -->
+    <div class="kylie-card">
+      <div class="kylie-av">K</div>
+      <div class="kylie-body">
+        <div class="kylie-name">Kylie · This Week</div>
+        <div class="kylie-msg" id="kylie-msg">"This week I want you to notice the gap between how you train and how you perform. That gap is just a trust deficit — and trust is built by showing up exactly like you are, right now. You're doing the work. Let it land."</div>
+        <div class="kylie-week">Week 2 · Identity & Belief</div>
+      </div>
+    </div>
+
+    <!-- Quick tiles -->
+    <div class="sec-label">Jump In</div>
+    <div class="tile-grid">
+      <div class="tile" onclick="showTab('today')">
+        <span class="tile-icon">✅</span>
+        <div class="tile-name">Today</div>
+        <div class="tile-desc">Checklists & routines</div>
+      </div>
+      <div class="tile" onclick="showTab('toolkit')">
+        <span class="tile-icon">🛠️</span>
+        <div class="tile-name">Mindset Toolkit</div>
+        <div class="tile-desc">Breath, meditations, scripts</div>
+      </div>
+      <div class="tile tile-game" onclick="openOverlay('ov-gameday')">
+        <span class="tile-icon">🏆</span>
+        <div class="tile-name">Game Day</div>
+        <div class="tile-desc">Activate your pre-comp sequence</div>
+      </div>
+      <div class="tile tile-hard" onclick="openOverlay('ov-hardday')">
+        <span class="tile-icon">💔</span>
+        <div class="tile-name" style="color:var(--coral)">Hard Day</div>
+        <div class="tile-desc">Process, reset, keep going</div>
+      </div>
+    </div>
+
+    <!-- Streak -->
+    <div class="streak-card">
+      <div class="streak-num" id="streak-num">5</div>
+      <div class="streak-right">
+        <div class="streak-label">Day streak 🔥 Keep it going.</div>
+        <div class="streak-dots" id="streak-dots"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TODAY -->
+  <div id="tab-today" class="scroll" style="display:none">
+    <div id="today-context-banner" style="background:rgba(35,204,204,0.07);border:1px solid var(--border-teal);border-radius:14px;padding:0.875rem 1.1rem;margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem">
+      <span id="today-context-icon" style="font-size:1.4rem;flex-shrink:0">🌅</span>
+      <div><div style="font-size:0.88rem;font-weight:600;margin-bottom:0.1rem" id="today-context-title">Morning Routine</div><div style="font-size:0.75rem;color:var(--muted)" id="today-context-sub">We've opened your morning checklist — set the tone for today.</div></div>
+    </div>
+    <div class="today-ring-wrap">
+      <div class="ring-svg-wrap">
+        <svg width="52" height="52" viewBox="0 0 52 52">
+          <circle class="r-bg" cx="26" cy="26" r="21"/>
+          <circle class="r-fill" id="r-fill" cx="26" cy="26" r="21" stroke-dasharray="131.9" stroke-dashoffset="131.9"/>
+        </svg>
+        <div class="r-pct" id="r-pct">0%</div>
+      </div>
+      <div>
+        <div class="ring-text-big" id="ring-big">0%</div>
+        <div class="ring-text-sub" id="ring-sub">Start your routines below</div>
+      </div>
+    </div>
+    <div class="today-switcher">
+      <button class="ts-btn active" onclick="setTodaySection(this,'am')">🌅 Morning</button>
+      <button class="ts-btn" onclick="setTodaySection(this,'pre')">⚡ Pre-Training</button>
+      <button class="ts-btn" onclick="setTodaySection(this,'post')">🏆 Post-Training</button>
+      <button class="ts-btn" onclick="setTodaySection(this,'pm')">🌙 Evening</button>
+    </div>
+
+    <!-- AM -->
+    <div id="ts-am">
+      <div class="cl-card">
+        <div class="cl-head" onclick="toggleCL(this)">
+          <div class="cl-ico cl-ico-gold">🌅</div>
+          <div class="cl-hb"><div class="cl-title">Morning Routine</div><div class="cl-sub" id="sub-am">Set the tone for today</div></div>
+          <div class="cl-arr">›</div>
+        </div>
+        <div class="cl-body open">
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">Today's Focus</div><input class="cinput" placeholder="One word or phrase that anchors your day..."/></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">3 Gratitudes</div><input class="cinput" placeholder="1." style="margin-bottom:0.3rem"/><input class="cinput" placeholder="2." style="margin-bottom:0.3rem"/><input class="cinput" placeholder="3."/></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">The Standard I'm Living by Today</div><input class="cinput" placeholder="e.g. I show up brave, not safe..."/></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">3 Key To-Dos</div><input class="cinput" placeholder="1." style="margin-bottom:0.3rem"/><input class="cinput" placeholder="2." style="margin-bottom:0.3rem"/><input class="cinput" placeholder="3."/></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">Morning Journal</div><span class="cprompt" id="am-prompt" onclick="nextPrompt('am')">↻ Tap for a prompt</span><textarea class="cinput" placeholder="Write freely..."></textarea></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">Sleep Quality</div><div class="cstars" id="stars-sleep"><span class="cstar" onclick="setStar('sleep',1)">⭐</span><span class="cstar" onclick="setStar('sleep',2)">⭐</span><span class="cstar" onclick="setStar('sleep',3)">⭐</span><span class="cstar" onclick="setStar('sleep',4)">⭐</span><span class="cstar" onclick="setStar('sleep',5)">⭐</span></div></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">One Act of Kindness / Value Today</div><input class="cinput" placeholder="e.g. Check in on a teammate..."/></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">AM Meditation</div><div class="ctoggle-row"><button class="ctoggle" onclick="tog(this)">Skip</button><button class="ctoggle" onclick="tog(this);openRes('morning_med')">5 min</button><button class="ctoggle" onclick="tog(this);openRes('morning_med')">10 min</button></div></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">AM Breathwork</div><div class="ctoggle-row"><button class="ctoggle" onclick="tog(this)">Skip</button><button class="ctoggle" onclick="tog(this);openRes('box')">Box (activate)</button><button class="ctoggle" onclick="tog(this);openRes('478')">4-7-8 (calm)</button></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRE -->
+    <div id="ts-pre" style="display:none">
+      <div class="cl-card">
+        <div class="cl-head" onclick="toggleCL(this)">
+          <div class="cl-ico cl-ico-teal">⚡</div>
+          <div class="cl-hb"><div class="cl-title">Pre-Training / Competition</div><div class="cl-sub" id="sub-pre">Prime your mind and body</div></div>
+          <div class="cl-arr">›</div>
+        </div>
+        <div class="cl-body open">
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">Energy Level</div><div class="ctoggle-row"><button class="ctoggle" onclick="tog(this)">🔋 Low</button><button class="ctoggle" onclick="tog(this)">⚡ Medium</button><button class="ctoggle" onclick="tog(this)">🔥 High</button></div></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">Body Check — Any Soreness?</div><div class="ctoggle-row"><button class="ctoggle" onclick="tog(this)">✅ All good</button><button class="ctoggle" onclick="tog(this)">⚠️ A bit sore</button><button class="ctoggle" onclick="tog(this)">🚨 Flagging it</button></div></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">Fuelled & Hydrated?</div><div class="ctoggle-row"><button class="ctoggle" onclick="tog(this)">✅ Both</button><button class="ctoggle" onclick="tog(this)">🍌 Food only</button><button class="ctoggle" onclick="tog(this)">💧 Water only</button><button class="ctoggle" onclick="tog(this)">❌ Not yet</button></div></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">Session Intention / Focus</div><input class="cinput" placeholder="e.g. Be first to the ball. Play brave."/></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">Breathwork</div><div class="ctoggle-row"><button class="ctoggle" onclick="tog(this)">Skip</button><button class="ctoggle" onclick="tog(this);openRes('box')">Box breath</button><button class="ctoggle" onclick="tog(this);openRes('activation')">Activation</button></div></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">Visualisation</div><div class="ctoggle-row"><button class="ctoggle" onclick="tog(this)">Skip</button><button class="ctoggle" onclick="tog(this);openRes('pregame_vis')">Run through</button></div></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">Reminder to Myself</div><input class="cinput" placeholder="e.g. Nerves mean I care. I'm ready."/></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST -->
+    <div id="ts-post" style="display:none">
+      <div class="cl-card">
+        <div class="cl-head" onclick="toggleCL(this)">
+          <div class="cl-ico cl-ico-green">🏆</div>
+          <div class="cl-hb"><div class="cl-title">Post-Training / Competition</div><div class="cl-sub" id="sub-post">Process, recover, grow</div></div>
+          <div class="cl-arr">›</div>
+        </div>
+        <div class="cl-body open">
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">What Went Well?</div><textarea class="cinput" placeholder="3 things minimum — be specific..."></textarea></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">One Thing to Improve</div><textarea class="cinput" placeholder="Be specific — one skill, one mindset moment..."></textarea></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">Recovery Checklist</div><div class="ctoggle-row"><button class="ctoggle" onclick="tog(this)">💧 Hydrate</button><button class="ctoggle" onclick="tog(this)">🍽️ Refuel</button><button class="ctoggle" onclick="tog(this)">🧘 Mobility</button><button class="ctoggle" onclick="tog(this)">🧊 Contrast therapy</button><button class="ctoggle" onclick="tog(this)">🤸 Stretching</button><button class="ctoggle" onclick="tog(this)">😴 Rest/nap</button><button class="ctoggle" onclick="tog(this)">🎧 Decompress</button></div></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">Performance Feel</div><div class="cstars" id="stars-perf"><span class="cstar" onclick="setStar('perf',1)">⭐</span><span class="cstar" onclick="setStar('perf',2)">⭐</span><span class="cstar" onclick="setStar('perf',3)">⭐</span><span class="cstar" onclick="setStar('perf',4)">⭐</span><span class="cstar" onclick="setStar('perf',5)">⭐</span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PM -->
+    <div id="ts-pm" style="display:none">
+      <div class="cl-card">
+        <div class="cl-head" onclick="toggleCL(this)">
+          <div class="cl-ico cl-ico-purple">🌙</div>
+          <div class="cl-hb"><div class="cl-title">Evening Wind-Down</div><div class="cl-sub" id="sub-pm">Close the day with intention</div></div>
+          <div class="cl-arr">›</div>
+        </div>
+        <div class="cl-body open">
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">3 Evening Gratitudes</div><input class="cinput" placeholder="1." style="margin-bottom:0.3rem"/><input class="cinput" placeholder="2." style="margin-bottom:0.3rem"/><input class="cinput" placeholder="3."/></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">What Am I Proud of Today?</div><textarea class="cinput" placeholder="Even tiny wins count..."></textarea></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">What Will I Work on Tomorrow?</div><input class="cinput" placeholder="One thing to carry forward..."/></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">Evening Journal</div><span class="cprompt" id="pm-prompt" onclick="nextPrompt('pm')">↻ Tap for a prompt</span><textarea class="cinput" placeholder="Write freely..."></textarea></div></div>
+          <div class="ci"><div class="cb" onclick="chk(this)"><span class="ck">✓</span></div><div class="cc"><div class="clabel">PM Wind-Down</div><div class="ctoggle-row"><button class="ctoggle" onclick="tog(this)">Skip</button><button class="ctoggle" onclick="tog(this);openRes('sleep_med')">Sleep meditation</button><button class="ctoggle" onclick="tog(this);openRes('478')">4-7-8 breath</button></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOOLKIT -->
+  <div id="tab-toolkit" class="scroll" style="display:none">
+    <!-- Podcast card -->
+    <div style="background:linear-gradient(135deg,#0d2020,#001818);border:1px solid var(--border-teal);border-radius:18px;padding:1.2rem;margin-bottom:1.1rem;">
+      <div class="eyebrow" style="margin-bottom:0.4rem">🎙️ Need More Inspiration?</div>
+      <div style="font-family:'Anton',sans-serif;font-size:1.15rem;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.3rem;">4TG Podcast</div>
+      <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;margin-bottom:1rem;">Raw conversations with elite athletes, coaches & performance experts in women's sport. New episodes every Wednesday.</div>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a href="https://open.spotify.com/show/224vjkfLg3s7ZBZTC2UANs" target="_blank" style="display:flex;align-items:center;gap:0.4rem;background:rgba(30,215,96,0.12);border:1px solid rgba(30,215,96,0.3);border-radius:10px;padding:0.5rem 0.875rem;text-decoration:none;color:#1ED760;font-size:0.78rem;font-weight:600;">🎵 Spotify</a>
+        <a href="https://podcasts.apple.com/gb/podcast/4tg/id1827727017" target="_blank" style="display:flex;align-items:center;gap:0.4rem;background:rgba(250,100,255,0.1);border:1px solid rgba(250,100,255,0.25);border-radius:10px;padding:0.5rem 0.875rem;text-decoration:none;color:#fa64ff;font-size:0.78rem;font-weight:600;">🎧 Apple Podcasts</a>
+        <a href="https://youtube.com/@4tg_podcast" target="_blank" style="display:flex;align-items:center;gap:0.4rem;background:rgba(255,70,70,0.1);border:1px solid rgba(255,70,70,0.25);border-radius:10px;padding:0.5rem 0.875rem;text-decoration:none;color:#ff4646;font-size:0.78rem;font-weight:600;">▶️ YouTube</a>
+      </div>
+    </div>
+
+    <div class="rtabs" id="rtabs-wrap">
+      <button class="rtab active" onclick="switchRTab(this,'breath')">🌬️ Breathwork</button>
+      <button class="rtab" onclick="switchRTab(this,'med')">🎧 Meditations</button>
+      <button class="rtab" onclick="switchRTab(this,'self')">💬 Self-Talk</button>
+      <button class="rtab" onclick="switchRTab(this,'aff')">⚡ Affirmations</button>
+      <button class="rtab" onclick="switchRTab(this,'journal')">📓 Prompts</button>
+      <button class="rtab" onclick="switchRTab(this,'vis')">🧠 Visualisation</button>
+    </div>
+    <div id="rlist"></div>
+    <div class="refresh-btn" onclick="aiRefreshRes()">✨ &nbsp;Generate New Options</div>
+    <div id="ai-generating" style="display:none;text-align:center;padding:1rem;font-size:0.8rem;color:var(--teal);">✨ Generating personalised suggestions...</div>
+  </div>
+
+  <!-- ME -->
+  <div id="tab-me" class="scroll" style="display:none">
+    <div class="sec-label">This Week at a Glance</div>
+    <div class="week-summary">
+      <div class="eyebrow" style="margin-bottom:0.2rem">Weekly Summary</div>
+      <div style="font-size:0.8rem;color:var(--muted);margin-bottom:0.1rem">Week 2 · 26 Feb – 4 Mar</div>
+      <div class="ws-row" id="ws-row"></div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num" id="me-checks">0</div><div class="stat-lbl">Check-ins done</div></div>
+      <div class="stat-card"><div class="stat-num" id="me-streak">5</div><div class="stat-lbl">Day streak 🔥</div></div>
+      <div class="stat-card"><div class="stat-num" id="me-journal">3</div><div class="stat-lbl">Journal entries</div></div>
+      <div class="stat-card"><div class="stat-num" id="me-tools">7</div><div class="stat-lbl">Tools used</div></div>
+    </div>
+
+    <div class="sec-label">Journal Timeline</div>
+    <div id="journal-timeline"></div>
+    <button class="btn-ci" style="width:100%;margin-top:0.25rem" onclick="addJournalEntry()">+ Add Entry</button>
+  </div>
+
+  <!-- CHAT -->
+  <div id="tab-chat" class="scroll" style="display:none;padding-bottom:0;">
+    <div style="display:flex;flex-direction:column;height:calc(100vh - 8rem);">
+      <div style="padding:0 0 0.75rem;">
+        <div class="eyebrow" style="margin-bottom:0.2rem">Direct Message</div>
+        <div style="font-size:0.78rem;color:var(--muted);">Message Kylie directly. She replies within 24–48 hours.</div>
+      </div>
+      <div id="chat-messages" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:0.75rem;padding-bottom:1rem;"></div>
+      <div style="display:flex;gap:0.6rem;padding:0.875rem 0;border-top:1px solid var(--border);background:var(--bg);position:sticky;bottom:0;">
+        <input id="chat-input" style="flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:24px;padding:0.7rem 1rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendMsg()"/>
+        <button onclick="sendMsg()" style="background:var(--teal);border:none;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;flex-shrink:0;">↑</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bnav">
+    <div class="nt active" id="nt-home" onclick="showTab('home')"><span class="ni">🏠</span>Home</div>
+    <div class="nt" id="nt-today" onclick="showTab('today')"><span class="ni">✅</span>Today</div>
+    <div class="nt" id="nt-toolkit" onclick="showTab('toolkit')"><span class="ni">🛠️</span>Toolkit</div>
+    <div class="nt" id="nt-me" onclick="showTab('me')"><span class="ni">👤</span>Me</div>
+    <div class="nt" id="nt-chat" onclick="showTab('chat')"><span class="ni">💬</span>Chat</div>
+  </nav>
+</div>
+
+<!-- ══ GAME DAY OVERLAY ══ -->
+<div class="overlay" id="ov-gameday">
+  <div class="ov-hdr"><button class="ov-back" onclick="closeOverlay('ov-gameday')">←</button><span class="ov-title">Game Day Mode</span></div>
+  <div class="ov-scroll">
+    <div class="gd-hero">
+      <div class="gd-badge">Pre-Competition Sequence</div>
+      <div class="gd-title">It's <span>Game</span> Day.</div>
+      <div class="gd-sub">This is what you've built for. Follow the sequence. Trust your prep.</div>
+    </div>
+    <div class="gd-mantra" id="gd-mantra">"Confidence isn't a feeling. It's a skill you practise. You've done the reps."</div>
+    <div class="gd-steps">
+      <div class="gd-step" onclick="openRes('box')">
+        <div class="gd-step-num">1</div>
+        <div class="gd-step-body"><div class="gd-step-title">Breathwork — Box Breathing</div><div class="gd-step-desc">4 cycles · 2 min · Regulate your nervous system</div></div>
+        <span style="color:var(--teal)">→</span>
+      </div>
+      <div class="gd-step" onclick="openRes('pregame_med')">
+        <div class="gd-step-num">2</div>
+        <div class="gd-step-body"><div class="gd-step-title">Focus Meditation</div><div class="gd-step-desc">7 min · Ground your nerves · Anchor your identity</div></div>
+        <span style="color:var(--teal)">→</span>
+      </div>
+      <div class="gd-step" onclick="openRes('pregame_vis')">
+        <div class="gd-step-num">3</div>
+        <div class="gd-step-body"><div class="gd-step-title">Visualisation</div><div class="gd-step-desc">5 min · See it clean · Feel it real</div></div>
+        <span style="color:var(--teal)">→</span>
+      </div>
+      <div class="gd-step" onclick="openRes('pregame_st')">
+        <div class="gd-step-num">4</div>
+        <div class="gd-step-body"><div class="gd-step-title">Self-Talk Scripts</div><div class="gd-step-desc">Your personal pre-game anchors</div></div>
+        <span style="color:var(--teal)">→</span>
+      </div>
+    </div>
+    <div class="eyebrow" style="margin-bottom:0.5rem">Refresh Your Mantra</div>
+    <div class="gd-mantra" id="gd-mantra2" style="cursor:pointer" onclick="refreshMantra()">"Play brave. Not safe." <br><span style="font-size:0.72rem;color:var(--muted)">Tap to refresh ↻</span></div>
+  </div>
+</div>
+
+<!-- ══ HARD DAY OVERLAY ══ -->
+<div class="overlay" id="ov-hardday">
+  <div class="ov-hdr"><button class="ov-back" onclick="closeOverlay('ov-hardday')">←</button><span class="ov-title">Hard Day Reset</span></div>
+  <div class="ov-scroll">
+    <div class="hd-intro">
+      <div class="hd-intro-emoji">💔</div>
+      <div class="hd-intro-title">You're Still Here.</div>
+      <div class="hd-intro-text">That means something. Hard days are part of the build — not a sign you're broken. Let's process this so it doesn't come with you tomorrow.</div>
+    </div>
+    <div class="hd-breath" onclick="openRes('cold')">
+      <div class="hd-breath-label">Start Here · Cold Reset Breath</div>
+      <div class="hd-breath-text">30 seconds to clear the cortisol fog → Tap to open</div>
+    </div>
+    <div class="hd-q"><div class="hd-q-label">What actually happened today?</div><textarea placeholder="Just the facts. Not the story around them..."></textarea></div>
+    <div class="hd-q"><div class="hd-q-label">What story am I telling myself about it?</div><textarea placeholder="Be honest here..."></textarea></div>
+    <div class="hd-q"><div class="hd-q-label">Is that story definitely true?</div><textarea placeholder="Challenge it..."></textarea></div>
+    <div class="hd-q"><div class="hd-q-label">What would I tell a teammate who had the same day?</div><textarea placeholder="Talk to yourself like someone you love..."></textarea></div>
+    <div class="hd-q"><div class="hd-q-label">What's one thing I can release before tomorrow?</div><textarea placeholder="Let it go here..."></textarea></div>
+    <div class="hd-breath" onclick="openRes('sleep_med')" style="background:rgba(167,139,250,0.06);border-color:rgba(167,139,250,0.25)">
+      <div class="hd-breath-label" style="color:var(--purple)">Finish With · Sleep Meditation</div>
+      <div class="hd-breath-text">Wind down. Let your nervous system recover → Tap to open</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ RESOURCE DETAIL OVERLAY ══ -->
+<div class="overlay" id="ov-res">
+  <div class="ov-hdr"><button class="ov-back" onclick="closeOverlay('ov-res')">←</button><span class="ov-title" id="ov-res-title">Resource</span></div>
+  <div class="ov-scroll" id="ov-res-body"></div>
+</div>
+
+<!-- ══ ADMIN OVERLAY ══ -->
+<div class="overlay" id="ov-admin">
+  <div class="ov-hdr"><button class="ov-back" onclick="closeOverlay('ov-admin')">←</button><span class="ov-title">Admin — 4TG Coaching</span></div>
+  <div class="ov-scroll">
+    <div class="admin-section-title">Clients</div>
+    <div id="admin-clients"></div>
+    <button class="btn-admin" onclick="addClient()" style="width:100%;margin-top:0.5rem">+ Add New Client</button>
+
+    <div class="admin-section-title" style="margin-top:1.5rem">Client Chat</div>
+    <div style="font-size:0.8rem;color:var(--muted);margin-bottom:0.875rem;">Reply to your client's messages directly in the chat.</div>
+    <button class="btn-admin" onclick="closeOverlay('ov-admin');showTab('chat');setTimeout(adminReply,300)">Reply as Kylie →</button>
+
+    <div class="admin-section-title" style="margin-top:1.5rem">Weekly Coach Message</div>
+    <div class="admin-field"><label>Kylie's Message (shown on Home)</label><textarea id="admin-msg" placeholder="Write this week's message to your clients...">"This week I want you to notice the gap between how you train and how you perform..."</textarea></div>
+    <div class="admin-field"><label>Week Title</label><input id="admin-week-title" value="Week 2 · Identity & Belief"/></div>
+    <button class="btn-admin" onclick="saveAdminMsg()">Save & Publish</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── DATA ── */
+const AFFIRMATIONS=["Confidence isn't a feeling. It's a skill you practise.","Self-belief is built, not gifted.","You've done the reps. Trust your body.","Play brave. Not safe.","Nerves mean you care. Care means you're ready.","Reset. Breathe. Go again.","You belong here. You've earned this.","Train confidence like you train fitness.","One play at a time. Be here.","Pressure is a privilege. You earned your seat at this table.","The version of you who thrives is already inside you.","You don't need calm to perform. You need a plan.","Progress over perfection. Every single time.","Be the athlete you needed when you were younger.","Every rep of self-belief counts — especially the ones no one sees.","Less hype. More game-day tools.","Comparison is the thief of performance. Run your own race.","What you do when no-one's watching builds game day.","For the change. For the future. For the girls.","Your mind is your edge."];
+const AM_PROMPTS=["What version of myself do I want to show up as today?","What would the most confident version of me do this session?","What fear might come up today, and what's my plan?","What story am I telling myself about my ability — is it true?","What does brave look like for me specifically today?","How do I want to feel at the end of today?","What is one thing I can do today my future self will thank me for?","If I could only control one thing today, what would I choose?","What does showing up for myself look like right now?","What does 'progress not perfection' mean for me today?"];
+const PM_PROMPTS=["What did today teach me about the athlete I'm becoming?","Where did I show up for myself today, even when it was hard?","What would I tell a younger athlete who had my exact day?","What's one thing I can release from today?","How did I handle pressure today? What did I learn?","If today had a title, what would it be?","What's one belief I want to reinforce before I sleep?","What am I most grateful for about my body and ability today?","Who did I show up for today?","What proud moment do I want to remember from today?"];
+const RESOURCES={breath:[{emoji:"📦",title:"Box Breathing",tag:"Activate · Focus",desc:"4-4-4-4 pattern. Resets your nervous system in under 2 minutes.",id:"box"},{emoji:"🌊",title:"4-7-8 Breathing",tag:"Calm · Sleep",desc:"Exhale twice as long as inhale. Activates your rest and recovery response.",id:"478"},{emoji:"🔥",title:"Activation Breath",tag:"Pre-Training",desc:"Sharp power breathing to wake up your nervous system.",id:"activation"},{emoji:"❄️",title:"Cold Reset Breath",tag:"Pressure Reset",desc:"Three sharp exhales. Clears cortisol fog in 30 seconds.",id:"cold"},{emoji:"🌸",title:"Diaphragmatic Breathing",tag:"Recovery",desc:"Deep belly breathing to fully down-regulate after intense training.",id:"diaphragm"}],med:[{emoji:"☀️",title:"Morning Activation",tag:"5 min · AM",desc:"Wake your mind. Set intention. Step in as the athlete you're becoming.",id:"morning_med"},{emoji:"⚡",title:"Pre-Game Focus",tag:"7 min · Pre-comp",desc:"Ground nerves. Visualise one clean confident play. Anchor identity.",id:"pregame_med"},{emoji:"🌙",title:"Wind-Down & Sleep",tag:"10 min · PM",desc:"Decompress. Release what doesn't serve. Prepare for deep sleep.",id:"sleep_med"},{emoji:"💪",title:"Confidence Builder",tag:"8 min · Anytime",desc:"Body-scan to reconnect with your strength. Best when doubt creeps in.",id:"conf_med"},{emoji:"🔄",title:"Post-Mistake Reset",tag:"5 min · Mid-session",desc:"Fast reset for the spiral. Breath + body language + cue word.",id:"reset_med"}],self:[{emoji:"💬",title:"Pre-Game Scripts",tag:"Competition",desc:'"I\'ve done the reps. I trust my body." "Play brave, not safe." "I belong here."',id:"pregame_st"},{emoji:"🔄",title:"Mistake Reset Scripts",tag:"In-the-moment",desc:'"Reset. Breathe. Go again." "One play at a time." "That was then. This is now."',id:"reset_st"},{emoji:"🌅",title:"Morning Scripts",tag:"Daily",desc:'"Today I choose progress over perfection." "I show up even when it\'s hard."',id:"morning_st"},{emoji:"🧱",title:"Pressure Scripts",tag:"High-stakes",desc:'"Pressure is a privilege." "I\'ve been here before. I know how to do this."',id:"pressure_st"},{emoji:"💪",title:"Identity Scripts",tag:"Self-belief",desc:'"I am an athlete constantly improving." "My confidence is built in training."',id:"identity_st"}],aff:[{emoji:"⚡",title:"Game-Day Affirmations",tag:"Competition",desc:"Confidence isn't a feeling — it's a skill. I practise it. I own it.",id:"gameday_aff"},{emoji:"🌅",title:"Morning Power Pack",tag:"Daily AM",desc:"I am capable. I am coachable. I am building something real.",id:"morning_aff"},{emoji:"🧠",title:"Mindset Reframes",tag:"Anytime",desc:"Nerves = excitement. Mistakes = data. Pressure = proof I care.",id:"reframe_aff"},{emoji:"💎",title:"Identity Affirmations",tag:"Deep belief",desc:"I am not my last performance. I am the totality of all the work I've done.",id:"identity_aff"},{emoji:"🔥",title:"Activation Pack",tag:"Pre-training",desc:"I show up. I go hard. I recover. I grow. That is who I am.",id:"activation_aff"}],journal:[{emoji:"🌅",title:"Morning Reflection Set",tag:"AM · 5 min",desc:"10 prompts to clarify your intention before the day begins.",id:"am_jset"},{emoji:"⚡",title:"Pressure Debrief",tag:"Post-comp",desc:"Structured questions to process a high-pressure game without the spiral.",id:"pressure_jset"},{emoji:"🌙",title:"Evening Integration",tag:"PM · 5 min",desc:"Close your day with gratitude, learning, and a clear intention.",id:"pm_jset"},{emoji:"💔",title:"Hard Day Processing",tag:"Tough moments",desc:"Prompts designed to move you through, not keep you stuck.",id:"hardday_jset"},{emoji:"🏆",title:"Win Anchoring",tag:"Celebrate progress",desc:"Capture what worked. Build the evidence base for your self-belief.",id:"win_jset"},{emoji:"🔍",title:"Identity Audit",tag:"Weekly review",desc:"Who am I as an athlete? Am I acting like her? What needs to shift?",id:"identity_jset"}],vis:[{emoji:"🎯",title:"Pre-Game Visualisation",tag:"5 min · Pre-comp",desc:"Walk through warm-up, first play, peak moment. See it clean, feel it real.",id:"pregame_vis"},{emoji:"💪",title:"Confidence Anchoring",tag:"3 min · Anytime",desc:"Recall your best performance feeling. Lock it in your body.",id:"conf_vis"},{emoji:"🔄",title:"Reset Visualisation",tag:"2 min · Mid-session",desc:"Quick mental reset. Clean slate. One cue. Step back in.",id:"reset_vis"},{emoji:"🌟",title:"Future Self",tag:"10 min · Reflection",desc:"Visualise the athlete you're becoming. How does she carry herself?",id:"future_vis"}]};
+const RES_DETAIL={box:{eyebrow:"Breathwork · Activate & Focus",title:"Box Breathing",yt:"https://www.youtube.com/watch?v=tEmt1Znux58",ytLabel:"Guided Box Breathing · 5 min",intro:"Used by Navy SEALs, surgeons, and elite athletes worldwide. Box breathing re-regulates your nervous system in under 2 minutes.",steps:[{n:"↑",t:"Inhale through your nose for 4 counts. Feel your belly expand."},{n:"▣",t:"Hold at the top for 4 counts. Stay still. Don't tense."},{n:"↓",t:"Exhale slowly through your mouth for 4 counts. Let it all go."},{n:"▣",t:"Hold at the bottom for 4 counts. Empty and still."}],note:"Repeat 4–6 cycles. Pair with your cue word on each exhale. Notice your jaw unclench — that's your body coming back online."},"478":{eyebrow:"Breathwork · Calm & Sleep",title:"4-7-8 Breathing",yt:"https://www.youtube.com/watch?v=gz4G31LGyog",ytLabel:"4-7-8 Guided Breathing · 3 min",intro:"The 4-7-8 technique activates your parasympathetic nervous system — your body's rest and recovery mode — fast.",steps:[{n:"↑",t:"Inhale quietly through your nose for 4 counts."},{n:"▣",t:"Hold your breath for 7 counts."},{n:"↓",t:"Exhale completely through your mouth for 8 counts — a gentle whoosh."}],note:"Complete 4 cycles. Powerful before sleep, after a tough game, or when anxiety spikes."},activation:{eyebrow:"Breathwork · Pre-Training",title:"Activation Breathing",intro:"A short, sharp breath pattern to wake up your nervous system and prime your body for intense physical output.",steps:[{n:"1",t:"Stand tall. Shoulders back. Take up space."},{n:"2",t:"Inhale fully through the nose — sharp and powerful, 2 counts."},{n:"3",t:"Exhale powerfully through the mouth — 1 count, like fogging a window."},{n:"4",t:"Repeat 10 times, increasing intensity with each breath."}],note:"Follow with your pre-game self-talk script. Your body is now primed."},cold:{eyebrow:"Breathwork · Pressure Reset",title:"Cold Reset Breath",intro:"When anxiety spikes mid-game or in the tunnel and you need a fast reset — this clears the cortisol fog in under 30 seconds.",steps:[{n:"1",t:"Take one deep inhale through the nose."},{n:"2",t:"Three sharp, powerful exhales through the mouth — empty the lungs completely."},{n:"3",t:"One long slow inhale for 4 counts."},{n:"4",t:"One long slow exhale for 6 counts. Feel your shoulders drop."}],note:"Say your cue word as you finish the last exhale. Step back in."},diaphragm:{eyebrow:"Breathwork · Recovery & Relax",title:"Diaphragmatic Breathing",intro:"Deep belly breathing activates your relaxation response — the antidote to shallow chest breathing that keeps stress hormones elevated.",steps:[{n:"1",t:"Lie down or sit. One hand on chest, one on belly."},{n:"2",t:"Breathe in slowly — belly hand rises, chest hand stays still."},{n:"3",t:"Exhale slowly — belly falls, full release."},{n:"4",t:"10 breaths minimum. Let your nervous system fully down-regulate."}],note:"Best done immediately post-training or before sleep."},morning_med:{eyebrow:"Meditation · 5 min · AM",title:"Morning Activation",yt:"https://www.youtube.com/watch?v=inpok4MKVLM",ytLabel:"5-min Morning Meditation · YouTube",intro:"Start your day in your body, not in your head. Sets your nervous system up for focused, grounded action.",steps:[{n:"1",t:"Sit upright. Close your eyes. Three deep breaths to arrive."},{n:"2",t:"Scan from head to toe — just notice, no judgement."},{n:"3",t:"Set your intention: 'Today I am ___.' Say it three times."},{n:"4",t:"Visualise stepping into your day as the athlete you're becoming."},{n:"5",t:"Open your eyes. You're ready."}],note:"Do this before you touch your phone. Own your first 5 minutes."},pregame_med:{eyebrow:"Meditation · 7 min · Pre-Comp",title:"Pre-Game Focus",yt:"https://www.youtube.com/watch?v=ZToicYcHIOU",ytLabel:"Pre-Game Focus Meditation · YouTube",intro:"Ground your nerves. Not to get rid of them — to channel them. This practice turns anxiety into fuel.",steps:[{n:"1",t:"Find quiet. Headphones in. Close your eyes."},{n:"2",t:"Box breathe x 4 cycles to arrive in your body."},{n:"3",t:"Say your identity statement: 'I am an athlete who ___'"},{n:"4",t:"Visualise one perfect play — feel it, don't just see it."},{n:"5",t:"Say your cue word three times. That's your anchor for today."}],note:"This is your plan. You don't need calm to perform. You need this."},sleep_med:{eyebrow:"Meditation · 10 min · PM",title:"Wind-Down & Sleep",yt:"https://www.youtube.com/watch?v=1vx8iUvfyCY",ytLabel:"Sleep Meditation for Athletes · YouTube",intro:"Decompress from the day. Your nervous system needs permission to switch off — this gives it that permission.",steps:[{n:"1",t:"Lie in bed. Hands on belly. Eyes closed."},{n:"2",t:"4-7-8 breathing x 4 cycles."},{n:"3",t:"Body scan — consciously release each muscle group from feet upward."},{n:"4",t:"Replay one proud moment from today. Let it settle in."},{n:"5",t:"Let go of everything else. Tomorrow will take care of itself."}],note:"You showed up today. Now let your body recover."},conf_med:{eyebrow:"Meditation · 8 min · Anytime",title:"Confidence Builder",yt:"https://www.youtube.com/watch?v=rkZl2gsLUp4",ytLabel:"Confidence Meditation · YouTube",intro:"A body-scan meditation to reconnect with your strength. Best used when doubt creeps in.",steps:[{n:"1",t:"Find a comfortable seat. Close your eyes."},{n:"2",t:"Breathe slowly and recall a moment you felt genuinely confident."},{n:"3",t:"Notice where that feeling lives in your body — let it expand."},{n:"4",t:"Remind yourself: that feeling was real. It's still there. It's you."}],note:"Confidence isn't somewhere else. It's a state you've already been in. This is how you access it."},reset_med:{eyebrow:"Meditation · 3 min · Mid-Session",title:"Post-Mistake Reset",intro:"Fast reset for the spiral. Breath + body language + cue word. Back in the game in 90 seconds.",steps:[{n:"1",t:"One sharp exhale — physically release the mistake."},{n:"2",t:"Roll your shoulders back. Head up. Take up space."},{n:"3",t:"One slow breath in for 4 counts, out for 6."},{n:"4",t:"Say your cue word. Step back in."}],note:"The best athletes in the world make mistakes. The difference is the reset speed."},pregame_vis:{eyebrow:"Visualisation · 5 min · Pre-Comp",title:"Pre-Game Visualisation",yt:"https://www.youtube.com/watch?v=M0R1a3LCEiI",ytLabel:"Guided Sports Visualisation · YouTube",intro:"Visualisation primes your nervous system to execute in real life. The brain can't fully distinguish vivid mental rehearsal from reality — use that.",steps:[{n:"1",t:"Close your eyes. Three deep breaths. Arrive."},{n:"2",t:"See your warm-up. Feel your body loose, alive, ready."},{n:"3",t:"See your first play. Execute it perfectly. Feel the confidence."},{n:"4",t:"If a mistake happens — reset calmly and see the correction."},{n:"5",t:"End with the feeling of walking off having given everything. Pride."}],note:"See it, feel it, be it. You've played this game before — in here."},conf_vis:{eyebrow:"Visualisation · 3 min · Anytime",title:"Confidence Anchoring",intro:"Recall your best ever performance feeling. Lock it in your body. Make it accessible on demand.",steps:[{n:"1",t:"Close your eyes and recall your best performance moment."},{n:"2",t:"Don't just see it — feel it. Where in your body does it live?"},{n:"3",t:"Give that feeling a colour, a word, a physical anchor (e.g. fist, breath)."},{n:"4",t:"Practise accessing it with just that cue."}],note:"This is called an anchor. The more you practise triggering it, the more reliable it becomes under pressure."},reset_vis:{eyebrow:"Visualisation · 2 min · Mid-Session",title:"Reset Visualisation",intro:"Quick mental reset. Clean slate. One cue. Step back in.",steps:[{n:"1",t:"Eyes closed or soft focus. One breath."},{n:"2",t:"Imagine a whiteboard. Write the mistake on it. Wipe it clean."},{n:"3",t:"See yourself making the next play perfectly."},{n:"4",t:"Cue word. Open eyes. Go."}]},future_vis:{eyebrow:"Visualisation · 10 min · Reflection",title:"Future Self",intro:"Visualise the athlete you're becoming. What does she do? How does she carry herself?",steps:[{n:"1",t:"Close your eyes. Breathe slowly for 2 minutes."},{n:"2",t:"See yourself 12 months from now — performing at your next level."},{n:"3",t:"What does she look like? How does she move? How does she speak to herself?"},{n:"4",t:"What did she do between now and then that got her there?"},{n:"5",t:"Write it down when you open your eyes."}],note:"Your future self isn't a fantasy. She's a blueprint. Act like her now."},pregame_st:{eyebrow:"Self-Talk · Competition",title:"Pre-Game Scripts",intro:"Pre-written anchors for game day. Pick 1–2 that hit hardest and repeat them until they're automatic.",steps:[{n:"💬",t:'"I\'ve done the reps. I trust my body."'},{n:"💬",t:'"Play brave. Not safe."'},{n:"💬",t:'"Nerves mean I care. Care means I\'m ready."'},{n:"💬",t:'"I belong here. I\'ve earned this."'},{n:"💬",t:'"One play at a time. Be here."'},{n:"💬",t:'"This is my moment. I\'ve been built for this."'}],note:"Write your top 2 in your morning checklist. Say them out loud before warm-up."},reset_st:{eyebrow:"Self-Talk · In-the-moment",title:"Mistake Reset Scripts",intro:"The 3-second reset. When a mistake happens, your internal voice is the difference between a spiral and a comeback.",steps:[{n:"💬",t:'"Reset. Breathe. Go again."'},{n:"💬",t:'"That was one play. Next play."'},{n:"💬",t:'"That was then. This is now."'},{n:"💬",t:'"I learn fast. I adapt faster."'},{n:"💬",t:'"My response is my superpower."'}],note:"Pair with one sharp exhale. That breath is your physical reset cue."},morning_st:{eyebrow:"Self-Talk · Daily",title:"Morning Scripts",intro:"How you talk to yourself before the day starts sets the tone. Make it count.",steps:[{n:"💬",t:'"Today I choose progress over perfection."'},{n:"💬",t:'"I show up even when it\'s hard — especially when it\'s hard."'},{n:"💬",t:'"I am building something real, one rep at a time."'},{n:"💬",t:'"What I do today matters."'}]},pressure_st:{eyebrow:"Self-Talk · High-Stakes",title:"Pressure Scripts",intro:"For the moments where everything feels amplified. These anchor you.",steps:[{n:"💬",t:'"Pressure is a privilege."'},{n:"💬",t:'"I\'ve been here before. I know how to do this."'},{n:"💬",t:'"The bigger the moment, the more I trust my training."'},{n:"💬",t:'"I thrive under pressure. It\'s where I\'m built for."'}]},identity_st:{eyebrow:"Self-Talk · Self-Belief",title:"Identity Scripts",intro:"Who you believe you are determines how you act. Repeat these until they\'re your default.",steps:[{n:"💬",t:'"I am an athlete who is constantly improving."'},{n:"💬",t:'"My confidence is built in training."'},{n:"💬",t:'"I am not my last performance."'},{n:"💬",t:'"I am brave enough to be coachable."'}]},identity_aff:{eyebrow:"Affirmations · Deep Belief",title:"Identity Affirmations",intro:"These are evidence-based truths about who you are as an athlete. Repeat them until you believe them — because they're already true.",steps:[{n:"⚡",t:'"I am not my last performance. I am the totality of all the work I\'ve done."'},{n:"⚡",t:'"My confidence is built in training. It shows up in competition."'},{n:"⚡",t:'"I am an athlete who keeps going."'},{n:"⚡",t:'"I am brave enough to be coachable."'},{n:"⚡",t:'"I belong in every room I walk into."'}]},gameday_aff:{eyebrow:"Affirmations · Game Day",title:"Game-Day Affirmations",intro:"Read these before you warm up. Say them out loud.",steps:[{n:"⚡",t:"Confidence isn't a feeling — it's a skill. I practise it. I own it."},{n:"⚡",t:"I play for the love of this game and I am ready for this moment."},{n:"⚡",t:"My nerves are fuel. I know how to use them."},{n:"⚡",t:"I trust my training. I trust my body. I trust myself."},{n:"⚡",t:"Today I play brave. Not safe."}]},morning_aff:{eyebrow:"Affirmations · Daily AM",title:"Morning Power Pack",intro:"Say these before you check your phone. Own your first 5 minutes.",steps:[{n:"⚡",t:'"I am capable. I am coachable. I am building something real."'},{n:"⚡",t:'"Today I choose progress over perfection."'},{n:"⚡",t:'"I show up. I go hard. I recover. I grow."'},{n:"⚡",t:'"The work I do today is evidence of who I\'m becoming."'}]},reframe_aff:{eyebrow:"Affirmations · Mindset Reframes",title:"Mindset Reframes",intro:"Flip the script on the most common performance blockers.",steps:[{n:"⚡",t:"Nerves = excitement. I get to use this energy."},{n:"⚡",t:"Mistakes = data. Every error teaches me something."},{n:"⚡",t:"Pressure = proof I care. And caring is my edge."},{n:"⚡",t:"Feedback = investment. My coach sees potential in me."}]}};
+
+/* ── STATE ── */
+let athleteName='Sarah', athleteSport='AFL';
+let ciDone=false;
+let curRTab='breath', rShuffles={};
+let amPIdx=0, pmPIdx=0;
+let journalEntries=[{date:'Mon 24 Feb',type:'Morning Journal',text:'I keep comparing my training to the other girls. But I\'ve been putting in the reps. Trust the process.',chips:['Sleep: Good','Energy: Medium']},{date:'Tue 25 Feb',type:'Evening Wind-Down',text:'Tough training today. Coach pushed hard. I got in my head after the third drill. Noticed it faster than usual though — that\'s progress.',chips:['Proud: Stayed on pitch','Focus: Reset speed']}];
+let checksDone=0;
+let clients=[{name:'Sarah Thompson',sport:'AFL',week:'Week 2'},{name:'Mia Chen',sport:'Netball',week:'Week 1'},{name:'Jade Williams',sport:'Basketball',week:'Week 3'}];
+
+/* ── TIME SLOT LOGIC ── */
+function getTimeSlot(){
+  const h=new Date().getHours();
+  if(h>=5&&h<12)  return 'morning';
+  if(h>=12&&h<17) return 'midday';
+  if(h>=17&&h<22) return 'evening';
+  return 'night';
+}
+
+/* Config per time slot: greeting, sub, checklist section, context banner, check-in questions */
+const TIME_CONFIG={
+  morning:{
+    greeting:'Good Morning',
+    emoji:'🌅',
+    sub:'Set the tone. Own your day before it owns you.',
+    checklistSection:'am',
+    bannerIcon:'🌅',
+    bannerTitle:'Morning Routine is up',
+    bannerSub:"We've opened your morning checklist — the best athletes win the morning.",
+    ciTitle:'Good Morning',
+    ciSub:'30 seconds to set the tone for your day.',
+    questions:[
+      {id:'sleep',label:'Sleep',chips:['😴 Poor','😐 OK','😊 Good','🌟 Great']},
+      {id:'energy',label:'Energy',chips:['🔋 Low','⚡ Medium','🔥 High']},
+      {id:'focus',type:'text',placeholder:"Today's focus word or intention..."},
+      {id:'grateful',type:'text',placeholder:"One thing I'm grateful for right now..."},
+    ],
+    cta:"Start my day →",
+    doneTitle:"Morning locked in.",
+    doneSub:`Let's go, NAME. Your day starts now.`
+  },
+  midday:{
+    greeting:'Ready to Train',
+    emoji:'⚡',
+    sub:'Prime your mind. Your body follows.',
+    checklistSection:'pre',
+    bannerIcon:'⚡',
+    bannerTitle:'Pre-Training Checklist',
+    bannerSub:"It's training time — we've opened your pre-session routine to get you primed.",
+    ciTitle:'Pre-Training Check',
+    ciSub:'Quick pulse-check before you go in.',
+    questions:[
+      {id:'energy',label:'Energy Right Now',chips:['🔋 Low','⚡ Medium','🔥 High']},
+      {id:'body',label:'Body Check',chips:['✅ All good','⚠️ A bit sore','🚨 Flagging']},
+      {id:'fuelled',label:'Fuelled & Hydrated?',chips:['✅ Both','🍌 Food only','💧 Water only','❌ Not yet']},
+      {id:'focus',type:'text',placeholder:'My intention for this session...'},
+    ],
+    cta:"I'm ready →",
+    doneTitle:"Let's go, NAME.",
+    doneSub:'Session intention locked. Trust your prep.'
+  },
+  evening:{
+    greeting:'How Was Today',
+    emoji:'🌙',
+    sub:'Process it. Own it. Reset for tomorrow.',
+    checklistSection:'pm',
+    bannerIcon:'🌙',
+    bannerTitle:'Evening Wind-Down',
+    bannerSub:"Good work today. We've opened your evening routine — close the day with intention.",
+    ciTitle:'Evening Reflection',
+    ciSub:"Let's close the day. How did it go?",
+    questions:[
+      {id:'dayrating',label:'How was today overall?',chips:['😔 Tough','😐 Average','😊 Good','🔥 Great']},
+      {id:'win',type:'text',placeholder:'One thing I did well today...'},
+      {id:'grateful',type:'text',placeholder:'Something I\'m grateful for today...'},
+      {id:'improve',type:'text',placeholder:'One thing I\'ll work on tomorrow...'},
+      {id:'tomorrow',type:'text',placeholder:"Tomorrow's intention or focus word..."},
+    ],
+    cta:"Close my day →",
+    doneTitle:"Day closed, NAME.",
+    doneSub:"You showed up. That's what matters. Rest well."
+  },
+  night:{
+    greeting:'Still Up',
+    emoji:'🌙',
+    sub:'Rest is training too.',
+    checklistSection:'pm',
+    bannerIcon:'🌙',
+    bannerTitle:'Wind-Down Time',
+    bannerSub:"It's late — your evening checklist is ready whenever you are. Rest is part of the build.",
+    ciTitle:'Late Night Check-in',
+    ciSub:'Quick reflection before you rest.',
+    questions:[
+      {id:'dayrating',label:'How was today?',chips:['😔 Tough','😐 Average','😊 Good','🔥 Great']},
+      {id:'proud',type:'text',placeholder:'One thing I\'m proud of today...'},
+      {id:'release',type:'text',placeholder:'One thing I\'m letting go of tonight...'},
+    ],
+    cta:"Rest easy →",
+    doneTitle:"Rest up, NAME.",
+    doneSub:"You did the work. Let your body recover."
+  }
+};
+
+/* ── LOGIN ── */
+function doLogin(){const n=document.getElementById('li-name').value.trim()||'Athlete';athleteName=n.split(' ')[0];enterApp();}
+function demoLogin(n,s){athleteName=n;athleteSport=s;enterApp();}
+
+function enterApp(){
+  document.getElementById('hdr-name').textContent=athleteName;
+  document.getElementById('hdr-av').textContent=athleteName[0];
+  showView('v-app');
+  buildCheckinCard();
+  buildWeeklyBanner();
+  buildStreak();
+  buildWeekSummary();
+  buildJournalTimeline();
+  buildChat();
+  switchRTab(null,'breath');
+  autoTimeChecklist();
+  updateRing();
+}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');}
+
+/* ── BUILD TIME-AWARE CHECK-IN CARD ── */
+function buildCheckinCard(){
+  const slot=getTimeSlot();
+  const cfg=TIME_CONFIG[slot];
+  const card=document.getElementById('ci-card');
+  // build questions HTML
+  let qHTML='';
+  cfg.questions.forEach(q=>{
+    if(q.chips){
+      qHTML+=`<div style="margin-bottom:0.6rem">
+        <div class="eyebrow" style="font-size:0.58rem;margin-bottom:0.35rem;color:var(--muted)">${q.label}</div>
+        <div class="ci-row">${q.chips.map(c=>`<button class="ci-chip" onclick="ciSel(this,'${q.id}')">${c}</button>`).join('')}</div>
+      </div>`;
+    } else {
+      qHTML+=`<input class="ci-focus" id="ci-${q.id}" placeholder="${q.placeholder}" style="margin-bottom:0.6rem"/>`;
+    }
+  });
+  card.innerHTML=`
+    <div class="eyebrow" style="margin-bottom:0.3rem">Daily Check-in · ${cfg.emoji}</div>
+    <div class="checkin-title">${cfg.ciTitle}, <span style="color:var(--teal)">${athleteName}</span></div>
+    <div class="checkin-sub">${cfg.ciSub}</div>
+    ${qHTML}
+    <button class="btn-ci" onclick="submitCI()">${cfg.cta}</button>`;
+}
+
+/* ── TABS ── */
+function showTab(t){['home','today','toolkit','me','chat'].forEach(x=>{document.getElementById('tab-'+x).style.display=x===t?'':'none';const n=document.getElementById('nt-'+x);if(n)n.classList.toggle('active',x===t);});}
+
+/* ── AUTO TIME CHECKLIST ── */
+function autoTimeChecklist(){
+  const slot=getTimeSlot();
+  const cfg=TIME_CONFIG[slot];
+  const s=cfg.checklistSection;
+  // update context banner
+  document.getElementById('today-context-icon').textContent=cfg.bannerIcon;
+  document.getElementById('today-context-title').textContent=cfg.bannerTitle;
+  document.getElementById('today-context-sub').textContent=cfg.bannerSub;
+  // set active section
+  const btns=document.querySelectorAll('.ts-btn');
+  btns.forEach(b=>b.classList.remove('active'));
+  btns.forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+s+"'"))b.classList.add('active');});
+  setTodaySection(null,s);
+}
+function setTodaySection(el,s){
+  ['am','pre','post','pm'].forEach(x=>document.getElementById('ts-'+x).style.display=x===s?'':'none');
+  if(el){document.querySelectorAll('.ts-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');}
+  // update context banner when manually switching
+  const map={am:{icon:'🌅',title:'Morning Routine',sub:'Start your day with intention — gratitudes, focus, and mindset.'},pre:{icon:'⚡',title:'Pre-Training / Competition',sub:'Prime your mind and body before you go in.'},post:{icon:'🏆',title:'Post-Training / Competition',sub:'Process what happened. Recover with intention.'},pm:{icon:'🌙',title:'Evening Wind-Down',sub:'Close the day with gratitude, reflection, and rest.'}};
+  if(map[s]){document.getElementById('today-context-icon').textContent=map[s].icon;document.getElementById('today-context-title').textContent=map[s].title;document.getElementById('today-context-sub').textContent=map[s].sub;}
+}
+
+/* ── CHECKLIST ── */
+function toggleCL(hdr){const body=hdr.nextElementSibling;const arr=hdr.querySelector('.cl-arr');body.classList.toggle('open');arr.classList.toggle('open');}
+function chk(el){el.classList.toggle('on');const lbl=el.closest('.ci').querySelector('.clabel');if(lbl)lbl.classList.toggle('done',el.classList.contains('on'));checksDone=document.querySelectorAll('#tab-today .cb.on').length;document.getElementById('me-checks').textContent=checksDone;updateRing();}
+function updateRing(){const all=document.querySelectorAll('#tab-today .cb').length;const done=document.querySelectorAll('#tab-today .cb.on').length;const pct=all?Math.round(done/all*100):0;const circ=131.9;const off=circ-(circ*pct/100);document.getElementById('r-fill').setAttribute('stroke-dashoffset',off);document.getElementById('r-pct').textContent=pct+'%';document.getElementById('ring-big').textContent=pct+'%';const subs=['Start your routines below','Building momentum — keep going','Halfway there, push on!','Almost done — finish strong!','Day complete. You showed up. ⚡'];document.getElementById('ring-sub').textContent=subs[Math.min(Math.floor(pct/25),4)];}
+function tog(el){el.closest('.ctoggle-row').querySelectorAll('.ctoggle').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');const cb=el.closest('.ci').querySelector('.cb');if(cb&&!cb.classList.contains('on')){cb.classList.add('on');cb.querySelector('.ck').style.display='block';updateRing();}}
+function setStar(g,v){document.querySelectorAll('#stars-'+g+' .cstar').forEach((s,i)=>s.classList.toggle('on',i<v));}
+
+/* ── PROMPTS ── */
+function nextPrompt(t){if(t==='am'){amPIdx=(amPIdx+1)%AM_PROMPTS.length;document.getElementById('am-prompt').textContent='↻ '+AM_PROMPTS[amPIdx];}else{pmPIdx=(pmPIdx+1)%PM_PROMPTS.length;document.getElementById('pm-prompt').textContent='↻ '+PM_PROMPTS[pmPIdx];}showToast('New prompt ↻');}
+
+/* ── CHECK-IN SUBMIT ── */
+let ciSelections={};
+function ciSel(el,group){el.closest('.ci-row').querySelectorAll('.ci-chip').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');ciSelections[group]=el.textContent.trim();}
+
+function submitCI(){
+  const slot=getTimeSlot();
+  const cfg=TIME_CONFIG[slot];
+  // collect chip selections + text inputs
+  const chips=[];
+  cfg.questions.forEach(q=>{
+    if(q.chips&&ciSelections[q.id]) chips.push(ciSelections[q.id]);
+    else if(q.type==='text'){const el=document.getElementById('ci-'+q.id);if(el&&el.value.trim())chips.push(el.value.trim());}
+  });
+  if(chips.length===0){showToast('Fill in at least one field');return;}
+  const card=document.getElementById('ci-card');
+  card.classList.add('checkin-done');
+  const doneTitle=cfg.doneTitle.replace('NAME',athleteName);
+  const doneSub=cfg.doneSub.replace('NAME',athleteName);
+  card.innerHTML=`
+    <div class="eyebrow" style="margin-bottom:0.4rem">Check-in Complete ${cfg.emoji}</div>
+    <div class="checkin-title" style="font-size:1.15rem">${doneTitle}</div>
+    <div style="font-size:0.8rem;color:var(--muted);margin-bottom:0.875rem">${doneSub}</div>
+    <div class="checkin-summary">${chips.slice(0,4).map(c=>`<span class="ci-sum-chip">${c.length>30?c.slice(0,30)+'…':c}</span>`).join('')}</div>`;
+  // log to journal
+  const now=new Date();
+  journalEntries.unshift({date:'Today · '+now.toLocaleTimeString('en-AU',{hour:'2-digit',minute:'2-digit'}),type:cfg.ciTitle,text:chips.join(' · '),chips:[]});
+  buildJournalTimeline();
+  showToast('Locked in '+cfg.emoji);
+  ciSelections={};
+}
+
+/* ── STREAK ── */
+function buildStreak(){const wrap=document.getElementById('streak-dots');wrap.innerHTML='';for(let i=0;i<7;i++){const d=document.createElement('div');d.className='sdot'+(i<4?' done':i===4?' today':'');wrap.appendChild(d);}}
+
+/* ── WEEK SUMMARY ── */
+function buildWeekSummary(){const row=document.getElementById('ws-row');const days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];const states=['full','full','full','part','today','miss','miss'];row.innerHTML=days.map((d,i)=>`<div class="ws-day"><div class="ws-day-lbl">${d}</div><div class="ws-dot ${states[i]}">${states[i]==='full'?'✓':states[i]==='part'?'~':states[i]==='today'?'→':''}</div></div>`).join('');}
+
+/* ── JOURNAL ── */
+function buildJournalTimeline(){const tl=document.getElementById('journal-timeline');tl.innerHTML='';[...journalEntries].reverse().forEach(e=>{const el=document.createElement('div');el.className='jentry';el.innerHTML=`<div class="je-date">${e.date}</div><div class="je-type">${e.type}</div><div class="je-text">${e.text}</div>${e.chips?`<div class="je-chips">${e.chips.map(c=>`<span class="je-chip">${c}</span>`).join('')}</div>`:''}</div>`;tl.appendChild(el);});document.getElementById('me-journal').textContent=journalEntries.length;}
+function addJournalEntry(){const text=prompt('Journal entry:');if(text&&text.trim()){const now=new Date();journalEntries.unshift({date:now.toLocaleDateString('en-AU',{weekday:'short',day:'numeric',month:'short'}),type:'Manual Entry',text:text.trim()});buildJournalTimeline();showToast('Entry saved 📓');}}
+
+/* ── RESOURCE TABS ── */
+function switchRTab(el,type){curRTab=type;document.querySelectorAll('.rtab').forEach(t=>t.classList.remove('active'));if(el)el.classList.add('active');renderRes(type);}
+function renderRes(type){const items=RESOURCES[type]||[];if(!rShuffles[type])rShuffles[type]=[...Array(items.length).keys()];const list=document.getElementById('rlist');list.innerHTML='';rShuffles[type].slice(0,5).forEach(i=>{const it=items[i];if(!it)return;const c=document.createElement('div');c.className='rcard';c.innerHTML=`<div class="remo">${it.emoji}</div><div class="rbody"><div class="rtitle">${it.title}</div><div class="rdesc">${it.desc}</div><div class="rtag">${it.tag}</div></div>`;c.onclick=()=>openRes(it.id);list.appendChild(c);});}
+function shuffleRes(){const items=RESOURCES[curRTab]||[];const all=[...Array(items.length).keys()];for(let i=all.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[all[i],all[j]]=[all[j],all[i]];}rShuffles[curRTab]=all;renderRes(curRTab);}
+function openRes(id){const d=RES_DETAIL[id];if(!d){showToast('Coming soon!');return;}document.getElementById('ov-res-title').textContent=d.title;let h=`<div class="ov-eyebrow">${d.eyebrow}</div><div class="ov-h1">${d.title}</div>`;if(d.yt)h+=`<a href="${d.yt}" target="_blank" style="display:flex;align-items:center;gap:0.6rem;background:rgba(255,70,70,0.1);border:1px solid rgba(255,70,70,0.25);border-radius:12px;padding:0.75rem 1rem;margin-bottom:1.25rem;text-decoration:none;color:#ff6b6b;font-size:0.82rem;font-weight:600;">▶️ ${d.ytLabel}</a>`;if(d.intro)h+=`<div class="ov-intro">${d.intro}</div>`;if(d.steps){h+='<div>';d.steps.forEach(s=>{h+=`<div class="ov-step"><div class="ov-sn">${s.n}</div><div class="ov-st">${s.t}</div></div>`;});h+='</div>';}if(d.note)h+=`<div class="ov-note">${d.note}</div>`;document.getElementById('ov-res-body').innerHTML=h;openOverlay('ov-res');}
+
+/* ── AI REFRESH RESOURCES ── */
+const AI_REFRESH_PROMPTS={
+  breath:"Generate 4 unique breathwork techniques for female athletes dealing with performance anxiety and pre-game nerves. For each give: a short title (3-5 words), a one-sentence description, and a 'tag' (e.g. 'Pre-Training', 'Recovery', 'Pressure Reset'). Return as JSON array with keys: title, desc, tag.",
+  med:"Generate 4 short guided meditation ideas for female athletes (ages 16-25). Each should have a title, one-sentence description, and a timing tag (e.g. '5 min · AM'). Return as JSON array with keys: title, desc, tag.",
+  self:"Generate 4 self-talk script sets for female athletes under pressure. Each should have a title, 2-3 example phrases as the description, and a situational tag (e.g. 'Pre-game', 'Mistake reset'). Return as JSON array with keys: title, desc, tag.",
+  aff:"Generate 4 sets of affirmations for female athletes building self-belief and confidence. Each should have a title, one powerful example affirmation as desc, and a tag. Return as JSON array with keys: title, desc, tag.",
+  journal:"Generate 4 journaling prompt sets for female athletes. Each set should have a title, one example prompt as desc, and a timing tag (e.g. 'Morning', 'Post-comp', 'Weekly review'). Return as JSON array with keys: title, desc, tag.",
+  vis:"Generate 4 sports visualisation scripts for female athletes. Each should have a title, one-sentence description of what the athlete will experience, and a timing tag. Return as JSON array with keys: title, desc, tag."
+};
+const AI_EMOJIS={breath:'🌬️',med:'🎧',self:'💬',aff:'⚡',journal:'📓',vis:'🧠'};
+async function aiRefreshRes(){
+  const btn=document.querySelector('.refresh-btn');
+  const loading=document.getElementById('ai-generating');
+  btn.style.display='none'; loading.style.display='block';
+  try {
+    const prompt=AI_REFRESH_PROMPTS[curRTab]||'Generate 4 mindset tools for athletes as JSON array with keys title, desc, tag.';
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt+' Return ONLY the JSON array, no other text.'}]})});
+    const data=await resp.json();
+    const raw=data.content.map(i=>i.text||'').join('');
+    const clean=raw.replace(/```json|```/g,'').trim();
+    const items=JSON.parse(clean);
+    const emoji=AI_EMOJIS[curRTab]||'✨';
+    const list=document.getElementById('rlist');
+    list.innerHTML='';
+    items.forEach(item=>{
+      const c=document.createElement('div');
+      c.className='rcard';
+      c.innerHTML=`<div class="remo">${emoji}</div><div class="rbody"><div class="rtitle">${item.title}</div><div class="rdesc">${item.desc}</div><div class="rtag">✨ AI Generated · ${item.tag||''}</div></div>`;
+      list.appendChild(c);
+    });
+    showToast('✨ New options generated!');
+  } catch(e){
+    shuffleRes();
+    showToast('Refreshed ↻');
+  }
+  btn.style.display=''; loading.style.display='none';
+}
+
+/* ── MONDAY WEEKLY FOCUS / SUNDAY REFLECTION ── */
+function getMondaySundayBanner(){
+  const day=new Date().getDay(); // 0=Sun, 1=Mon
+  if(day===1){
+    return {
+      show:true,
+      type:'monday',
+      icon:'🗓️',
+      title:"It's Monday — Set Your Weekly Focus",
+      sub:"What's the one area of your life you want to intentionally grow this week?",
+      areas:['🏃 Training','🧠 Mindset','❤️ Relationships','📚 Self-Development','😴 Recovery','🎯 Performance'],
+      prompt:"My weekly focus is:"
+    };
+  }
+  if(day===0){
+    return {
+      show:true,
+      type:'sunday',
+      icon:'📖',
+      title:"Sunday Reflection",
+      sub:"Take 5 minutes to close the week with intention.",
+      questions:["What was my biggest win this week?","Where did I show up for myself, even when it was hard?","What challenged me, and what did it teach me?","What do I want to carry into next week?","One thing I'm proud of myself for this week:"],
+      prompt:""
+    };
+  }
+  return {show:false};
+}
+
+function buildWeeklyBanner(){
+  const cfg=getMondaySundayBanner();
+  const existing=document.getElementById('weekly-banner');
+  if(existing) existing.remove();
+  if(!cfg.show) return;
+  const banner=document.createElement('div');
+  banner.id='weekly-banner';
+  banner.style.cssText='background:linear-gradient(135deg,#0a1a0a,#0d2010);border:1px solid rgba(62,207,142,0.25);border-radius:18px;padding:1.25rem;margin-bottom:1.1rem;';
+  if(cfg.type==='monday'){
+    banner.innerHTML=`<div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#3ecf8e;margin-bottom:0.35rem;">${cfg.icon} Weekly Focus</div>
+    <div style="font-family:'Anton',sans-serif;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.25rem;">${cfg.title}</div>
+    <div style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:0.875rem;">${cfg.sub}</div>
+    <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.875rem;">${cfg.areas.map(a=>`<button onclick="selWeekFocus(this)" style="padding:0.3rem 0.7rem;border-radius:16px;border:1px solid rgba(255,255,255,0.12);font-size:0.76rem;cursor:pointer;background:transparent;color:rgba(255,255,255,0.5);transition:all 0.15s;">${a}</button>`).join('')}</div>
+    <input id="weekly-focus-input" placeholder="My focus this week is..." style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:8px;padding:0.55rem 0.75rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;outline:none;margin-bottom:0.6rem;"/>
+    <button onclick="saveWeeklyFocus()" style="background:#3ecf8e;color:#080c0c;font-family:'Anton',sans-serif;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:8px;padding:0.6rem 1.2rem;cursor:pointer;">Lock In →</button>`;
+  } else {
+    banner.innerHTML=`<div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#3ecf8e;margin-bottom:0.35rem;">${cfg.icon} Sunday Reflection</div>
+    <div style="font-family:'Anton',sans-serif;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.75rem;">${cfg.title}</div>
+    ${cfg.questions.map((q,i)=>`<div style="margin-bottom:0.7rem;"><div style="font-size:0.8rem;color:rgba(255,255,255,0.7);margin-bottom:0.3rem;">${q}</div><textarea style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:8px;padding:0.5rem 0.7rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.82rem;outline:none;resize:none;min-height:55px;" placeholder="..."></textarea></div>`).join('')}
+    <button onclick="saveSundayReflection(this)" style="background:#3ecf8e;color:#080c0c;font-family:'Anton',sans-serif;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:8px;padding:0.6rem 1.2rem;cursor:pointer;">Save Reflection →</button>`;
+  }
+  const homeTab=document.getElementById('tab-home');
+  homeTab.insertBefore(banner,homeTab.firstChild);
+}
+function selWeekFocus(el){document.querySelectorAll('#weekly-banner button').forEach(b=>{if(b!==el)b.style.background='transparent';b.style.color='rgba(255,255,255,0.5)';b.style.borderColor='rgba(255,255,255,0.12)';});el.style.background='rgba(62,207,142,0.15)';el.style.color='#3ecf8e';el.style.borderColor='rgba(62,207,142,0.35)';const input=document.getElementById('weekly-focus-input');if(input)input.value=el.textContent+' — ';}
+function saveWeeklyFocus(){const val=document.getElementById('weekly-focus-input')?.value?.trim();if(!val){showToast('Add your focus first');return;}journalEntries.unshift({date:'Monday · Weekly Focus',type:'Weekly Intention',text:val,chips:[]});buildJournalTimeline();document.getElementById('weekly-banner').style.opacity='0.5';showToast('Weekly focus locked 🎯');}
+function saveSundayReflection(btn){journalEntries.unshift({date:'Sunday · Weekly Reflection',type:'Weekly Review',text:'Week reflected. Well done.',chips:[]});buildJournalTimeline();btn.textContent='Saved ✓';btn.style.background='rgba(62,207,142,0.2)';btn.style.color='#3ecf8e';showToast('Week closed beautifully 📖');}
+
+/* ── CHAT ── */
+let chatMessages=[
+  {from:'kylie',text:"Hey! Welcome to your 4TG coaching space. This is where you can message me directly — ask questions, share wins, or just check in. I reply within 24–48 hours. You've got this. ⚡",time:'Mon 24 Feb · 9:00am'}
+];
+function buildChat(){
+  const wrap=document.getElementById('chat-messages');
+  if(!wrap) return;
+  wrap.innerHTML='';
+  chatMessages.forEach(m=>{
+    const isMe=m.from==='athlete';
+    const el=document.createElement('div');
+    el.style.cssText=`display:flex;flex-direction:column;align-items:${isMe?'flex-end':'flex-start'};margin-bottom:0.1rem;`;
+    el.innerHTML=`
+      ${!isMe?`<div style="font-size:0.65rem;color:var(--teal);margin-bottom:0.25rem;letter-spacing:0.08em;text-transform:uppercase;">Kylie</div>`:''}
+      <div style="max-width:80%;background:${isMe?'var(--teal)':'rgba(255,255,255,0.07)'};color:${isMe?'var(--bg)':'var(--body)'};border-radius:${isMe?'18px 18px 4px 18px':'18px 18px 18px 4px'};padding:0.75rem 1rem;font-size:0.88rem;line-height:1.5;">${m.text}</div>
+      <div style="font-size:0.62rem;color:var(--muted);margin-top:0.3rem;">${m.time}</div>`;
+    wrap.appendChild(el);
+  });
+  wrap.scrollTop=wrap.scrollHeight;
+}
+function sendMsg(){
+  const inp=document.getElementById('chat-input');
+  const txt=inp.value.trim();
+  if(!txt) return;
+  const now=new Date();
+  const time=now.toLocaleDateString('en-AU',{weekday:'short',day:'numeric',month:'short'})+' · '+now.toLocaleTimeString('en-AU',{hour:'2-digit',minute:'2-digit'});
+  chatMessages.push({from:'athlete',text:txt,time});
+  inp.value='';
+  buildChat();
+  // Pending reply indicator
+  setTimeout(()=>{
+    const wrap=document.getElementById('chat-messages');
+    if(!wrap) return;
+    const typing=document.createElement('div');
+    typing.id='typing-indicator';
+    typing.style.cssText='display:flex;flex-direction:column;align-items:flex-start;';
+    typing.innerHTML=`<div style="font-size:0.65rem;color:var(--teal);margin-bottom:0.25rem;letter-spacing:0.08em;text-transform:uppercase;">Kylie</div><div style="background:rgba(255,255,255,0.07);border-radius:18px 18px 18px 4px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--muted);">Message received — Kylie will reply within 24–48 hrs ✓</div>`;
+    wrap.appendChild(typing);
+    wrap.scrollTop=wrap.scrollHeight;
+  },800);
+  showToast('Message sent ✓');
+}
+
+/* ── ADMIN CHAT REPLY ── */
+function adminReply(){
+  const txt=prompt('Reply as Kylie:');
+  if(!txt||!txt.trim()) return;
+  // Remove pending indicator if present
+  const typing=document.getElementById('typing-indicator');
+  if(typing) typing.remove();
+  const now=new Date();
+  const time=now.toLocaleDateString('en-AU',{weekday:'short',day:'numeric',month:'short'})+' · '+now.toLocaleTimeString('en-AU',{hour:'2-digit',minute:'2-digit'});
+  chatMessages.push({from:'kylie',text:txt.trim(),time});
+  buildChat();
+  showToast('Reply sent as Kylie ✓');
+}
+
+/* ── OVERLAYS ── */
+function openOverlay(id){document.getElementById(id).classList.add('open');}
+function closeOverlay(id){document.getElementById(id).classList.remove('open');}
+
+/* ── GAME DAY MANTRA ── */
+let mantIdx=0;
+function refreshMantra(){mantIdx=(mantIdx+1)%AFFIRMATIONS.length;document.getElementById('gd-mantra2').innerHTML=`"${AFFIRMATIONS[mantIdx]}"<br><span style="font-size:0.72rem;color:var(--muted)">Tap to refresh ↻</span>`;}
+
+/* ── ADMIN ── */
+function openAdmin(){buildAdminClients();openOverlay('ov-admin');}
+function buildAdminClients(){const el=document.getElementById('admin-clients');el.innerHTML=clients.map((c,i)=>`<div class="client-row" style="margin-bottom:0.5rem"><div class="client-av">${c.name[0]}</div><div class="client-info"><div class="client-name">${c.name}</div><div class="client-sport">${c.sport} · ${c.week}</div></div><span class="client-edit" onclick="loginAsClient(${i})">View as client →</span></div>`).join('');}
+function loginAsClient(i){const c=clients[i];athleteName=c.name.split(' ')[0];athleteSport=c.sport;closeOverlay('ov-admin');enterApp();}
+function addClient(){const name=prompt('Client name:');if(name&&name.trim()){const sport=prompt('Sport:')||'Sport';clients.push({name:name.trim(),sport,week:'Week 1'});buildAdminClients();showToast('Client added ✓');}}
+function saveAdminMsg(){const msg=document.getElementById('admin-msg').value.trim();if(msg){document.getElementById('kylie-msg').textContent=msg;showToast('Message published ✓');closeOverlay('ov-admin');}}
+
+/* ── TOAST ── */
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+</script>
+<!-- PWA Install Banner -->
+<div id="pwa-banner" style="display:none;position:fixed;bottom:5.5rem;left:1rem;right:1rem;background:linear-gradient(135deg,#0d2020,#001818);border:1px solid rgba(35,204,204,0.35);border-radius:16px;padding:1rem 1.1rem;z-index:998;display:none;align-items:center;gap:0.875rem;backdrop-filter:blur(16px);">
+  <div style="font-size:1.6rem;flex-shrink:0;">📲</div>
+  <div style="flex:1;">
+    <div style="font-family:'Anton',sans-serif;font-size:0.95rem;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.15rem;">Add to Home Screen</div>
+    <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);">Install 4TG for the full app experience</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:0.4rem;flex-shrink:0;">
+    <button id="pwa-install-btn" style="background:#23CCCC;color:#080c0c;font-family:'Anton',sans-serif;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;border:none;border-radius:8px;padding:0.45rem 0.875rem;cursor:pointer;">Install</button>
+    <button onclick="document.getElementById('pwa-banner').style.display='none'" style="background:transparent;color:rgba(255,255,255,0.4);font-size:0.7rem;border:none;cursor:pointer;padding:0.2rem;">Not now</button>
+  </div>
+</div>
+
+<script>
+// ── PWA: Service Worker Registration ──
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    // Inline service worker as a blob so we don't need a separate file
+    const swCode = `
+const CACHE = '4tg-v1';
+const ASSETS = ['/'];
+self.addEventListener('install', e => {
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS).catch(()=>{})));
+  self.skipWaiting();
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));
+  self.clients.claim();
+});
+self.addEventListener('fetch', e => {
+  e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('/'))));
+});`;
+    const blob = new Blob([swCode], {type: 'application/javascript'});
+    const swUrl = URL.createObjectURL(blob);
+    navigator.serviceWorker.register(swUrl).catch(()=>{});
+  });
+}
+
+// ── PWA: Install Prompt ──
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Show banner after a short delay so it doesn't appear on first load
+  setTimeout(() => {
+    const banner = document.getElementById('pwa-banner');
+    if (banner) banner.style.display = 'flex';
+  }, 4000);
+});
+
+document.getElementById('pwa-install-btn')?.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  document.getElementById('pwa-banner').style.display = 'none';
+  if (outcome === 'accepted') showToast('4TG installed ⚡');
+});
+
+window.addEventListener('appinstalled', () => {
+  document.getElementById('pwa-banner').style.display = 'none';
+  showToast('Welcome to your arena 🏆');
+});
+</script>
+</body>
+</html>
